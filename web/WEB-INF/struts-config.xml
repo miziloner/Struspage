@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts-config PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 1.1//EN" "org/apache/struts/resources/struts-config_1_1.dtd">
+
+<struts-config>
+   <!--data-sources>
+		<data-source key="MySQL" type="org.apache.commons.dbcp.BasicDataSource">
+			<set-property property="description" value="SNTSA-1.0"/>
+			<set-property property="driverClassName" value="com.mysql.jdbc.Driver"/>
+			<set-property property="url" value="jdbc:mysql://localhost/sntsa"/>
+			<set-property property="username" value="sntsa"/>
+			<set-property property="password" value="sntsaMXDS16"/>
+			<set-property property="initialSize" value="2"/>
+			<set-property property="maxActive" value="20"/>
+			<set-property property="maxIdle" value="10"/>
+			<set-property property="maxWait" value="20000"/>
+			<set-property property="defaultAutoCommit" value="false"/>
+		</data-source>
+	</data-sources-->
+
+	<form-beans>
+		<!--form-bean name="MainForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="PRINCIvarsjsHDN" type="java.lang.String"/>
+			<form-property name="PRINCIavailableappsHDN" type="java.lang.String"/>
+			<form-property name="PRINCIestructuraHDN" type="java.lang.Long"/>
+			<form-property name="PRINCIestructureHDN" type="java.lang.String"/>
+			<form-property name="PRINCInivelEstructuraHDN" type="java.lang.String"/>
+			<form-property name="PRINCIsegSesionHDN" type="java.lang.Long"/>
+			<form-property name="PRINCIusuarioHDN" type="java.lang.String"/>
+			<form-property name="STMUSRidiomaHDN" type="java.lang.String"/>
+			<form-property name="STMUSRaparienciaHDN" type="java.lang.String"/>
+		</form-bean-->
+		<form-bean name="LoginForm" type="org.apache.struts.action.DynaActionForm">
+			<form-property name="STMUSRusuarioTXT" type="java.lang.String"/>
+			<form-property name="STMUSRpasswordTXT" type="java.lang.String"/>
+			<!--form-property name="STMUSRbaseTXT" type="java.lang.String"/>
+			<form-property name="STMUSRidiomaHDN" type="java.lang.String"/>
+			<form-property name="STMUSRaparienciaHDN" type="java.lang.String"/>
+			<form-property name="STMUSRnombrebdHDN" type="java.lang.String"/>
+			<form-property name="STMUSRcertificadoHDN" type="java.lang.String"/>
+			<form-property name="STMUSRcertificdoFLE" type="org.apache.struts.upload.FormFile"/-->
+		</form-bean>
+		<!--form-bean name="ChatForm" type="org.apache.struts.action.DynaActionForm">
+		</form-bean>
+		<form-bean name="HelpForm" type="org.apache.struts.action.DynaActionForm">
+		</form-bean-->
+	</form-beans>
+
+	<global-exceptions/>
+
+	<global-forwards>
+		<forward name="welcome" path="Welcome.do?do=start"></forward>
+		<!--forward name="textResponse" path="page.textResponse"></forward>
+		<forward name="jsonResponse" path="page.jsonResponse"></forward-->
+	</global-forwards>
+
+	<action-mappings>
+		<action path="/Welcome" type="com.myapp.struts.StartAction" name="LoginActionForm" parameter="do" scope="request" validate="false" unknown="false">
+			<forward name="start" path="/JSPs/login.jsp"></forward>
+			<forward name="startmvl" path="page.loginmvl"></forward>
+		</action>
+		<action path="/Login" type="com.mxds.erp.actions.LoginAction" name="LoginForm" parameter="do" scope="request" validate="false" unknown="false">
+			<forward name="idioma" path="page.login"></forward>
+			<forward name="estructuraorg" path="page.structure"></forward>
+		</action>
+		
+		<!--action path="/Main" type="com.mxds.erp.actions.MainAction" name="MainForm" parameter="do" scope="request" validate="false" unknown="false">
+			<forward name="regresar" path="page.login"/>
+			<forward name="entrarsys" path="page.main"/>
+			<forward name="idioma" path="page.main"></forward>
+			<forward name="ERROR" path="page.mainerror"/>
+		</action>
+		<action path="/Chat" type="com.mxds.erp.actions.ChatAction" name="ChatForm" parameter="do" scope="request" validate="false" unknown="false">
+			<forward name="OK" path="page.chat"/>
+		</action>
+		<action path="/Help" type="com.mxds.erp.actions.HelpAction" name="HelpForm" parameter="do" scope="request" validate="false" unknown="false">
+			<forward name="OK" path="page.help"/>
+		</action-->
+	</action-mappings>
+
+	<!--controller processorClass="org.apache.struts.tiles.TilesRequestProcessor" maxFileSize="4M" inputForward="true"/>
+
+	<message-resources key="mxds" parameter="com.mxds.erp.properties.ApplicationResources"/>
+
+	<plug-in className="org.apache.struts.tiles.TilesPlugin">
+		<set-property property="definitions-config" value="/WEB-INF/tiles-defs.xml"/>
+		<set-property property="moduleAware" value="true"/>
+		<set-property property="definitions-parser-validate" value="true"/>
+	</plug-in-->
+</struts-config>
